@@ -278,10 +278,7 @@
                   <div class="weather-input">
                     <h3 style="color: white;">Enter a City Name</h3>
 
-                    <!---Loading Spiner -->
-                    <div id="loading" style="display: none;">
-                      <img src="loading-spinner.gif" alt="Loading...">
-                    </div>
+                    
 
                     <input class="city-input" type="text" placeholder="E.g., New York, London, Tokyo">
                     <button class="search-btn">Search</button>
@@ -367,18 +364,6 @@
                           }
 
                           const getWeatherDetails = (cityName, latitude, longitude) => {
-                            showLoading(); // Show loading spinner
-                            fetch(WEATHER_API_URL)
-                              .then(response => response.json())
-                              .then(data => {
-                                hideLoading(); // Hide loading spinner
-                                // existing code
-                              })
-                              .catch(() => {
-                                hideLoading(); // Hide loading spinner on error
-                                alert("An error occurred while fetching the weather forecast!");
-                              });
-
                             const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
 
                             fetch(WEATHER_API_URL).then(response => response.json()).then(data => {
@@ -450,21 +435,6 @@
                           locationButton.addEventListener("click", getUserCoordinates);
                           searchButton.addEventListener("click", getCityCoordinates);
                           cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates())
-
-
-                          //loading spinner js code
-                          const showLoading = () => {
-                            document.getElementById('loading').style.display = 'block';
-                          };
-
-                          const hideLoading = () => {
-                            document.getElementById('loading').style.display = 'none';
-                          };
-
-
-
-                          // Similarly, show and hide loading in getCityCoordinates and getUserCoordinates
-
                         </script>
                       </ul>
                     </div>
